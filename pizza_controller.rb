@@ -44,11 +44,7 @@ end
 
 # update
 post '/pizza-orders/:id' do
-  @order = PizzaOrder.find(params[:id])
-  @order.first_name = params[:first_name]
-  @order.last_name = params[:last_name]
-  @order.quantity = params[:quantity]
-  @order.topping = params[:topping]
+  @order = PizzaOrder.new(params)
   @order.update
-  redirect('/pizza-orders') 
+  redirect('/pizza-orders')
 end
