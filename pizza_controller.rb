@@ -39,6 +39,16 @@ end
 #edit
 get '/pizza-orders/:id/edit' do
   @order = PizzaOrder.find(params[:id])
-
   erb(:edit)
+end
+
+# update
+post '/pizza-orders/:id' do
+  @order = PizzaOrder.find(params[:id])
+  @order.first_name = params[:first_name]
+  @order.last_name = params[:last_name]
+  @order.quantity = params[:quantity]
+  @order.topping = params[:topping]
+  @order.update
+  redirect('/pizza-orders') 
 end
